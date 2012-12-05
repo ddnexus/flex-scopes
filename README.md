@@ -1,10 +1,10 @@
-# flex-find
+# flex-scopes
 
-`flex-find` provides an easy to use ruby API to search ElasticSearch with ActiveRecord-like chainable ane mergeables scopes.
+`flex-scopes` provides an easy to use ruby API to search ElasticSearch with ActiveRecord-like chainable ane mergeables scopes.
 
 ## Useful Links
 
-* [Documentation](https://github.com/ddnexus/flex/wiki/flex-find)
+* [Documentation](https://github.com/ddnexus/flex/wiki/flex-scopes)
 
 ## Credits
 

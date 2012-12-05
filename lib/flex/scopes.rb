@@ -1,6 +1,19 @@
 module Flex
-  module Find
-    module Methods
+  module Scopes
+
+    def self.included(context)
+      context.class_eval do
+        @flex ||= ClassProxy::Base.new(context)
+        @flex.extend(ClassProxy::CommonVars) # used to add index and type to Loader only classes
+        def self.flex; @flex end
+
+        extend ClassMethods
+        @scope_methods = []
+        def self.scope_methods; @scope_methods end
+      end
+    end
+
+    module ClassMethods
 
       #    Scope methods. They returns a Scope object similar to AR.
       #    You can chain scopes, then you can call :count, :first, :all and :scan_all to get your result
@@ -23,12 +36,12 @@ module Flex
       Utils.define_delegation :to  => :scoped,
                               :in  => self,
                               :by  => :module_eval,
-                              :for => Scope::METHODS
+                              :for => Scope::SCOPED_METHODS
 
 
       # You can start with a non restricted Flex::Scope object
       def scoped
-        @scoped ||= Flex::Scope[:context => flex.context]
+        @scoped ||= Scope[:context => flex.context]
       end
 
 
@@ -66,9 +79,11 @@ module Flex
                 unless scope.is_a?(Flex::Scope)
           scope
         end
-        scopes << name
+        scope_methods << name
       end
 
     end
+
   end
 end
+
