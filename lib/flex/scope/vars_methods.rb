@@ -61,6 +61,11 @@ module Flex
         deep_merge :type => val
       end
 
+      def script_fields(hash)
+        hash.each_value {|v| v[:script].gsub!(/\n+\s*/,' ')}
+        deep_merge :__script_fields => hash
+      end
+
     private
 
       def array_value(value)

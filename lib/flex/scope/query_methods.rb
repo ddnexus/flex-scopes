@@ -3,7 +3,6 @@ module Flex
 
     module Query
 
-      extend self
       include Loader
       flex.load_source File.expand_path('../queries.yml', __FILE__)
 

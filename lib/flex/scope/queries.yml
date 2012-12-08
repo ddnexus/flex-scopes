@@ -3,6 +3,8 @@ ANCHORS:
     query:
       query_string:
         query: <<query= '*' >>
+    script_fields:
+      <<__script_fields= ~ >>
     filter:
       and:
         - term: <<terms= ~ >>
