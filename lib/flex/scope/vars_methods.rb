@@ -68,6 +68,10 @@ module Flex
         deep_merge :__script_fields => hash
       end
 
+      def facets(hash)
+        deep_merge :facets => hash
+      end
+
     private
 
       def array_value(value)

@@ -12,7 +12,7 @@ ANCHORS:
         - <<_missing_fields= ~ >>
         - <<filters= ~ >>
     sort: <<sort= ~ >>
-
+    facets: <<facets= ~ >>
 
 
 _missing_fields:
