@@ -4,7 +4,7 @@ ANCHORS:
       query_string:
         <<query= {query:\ '*'} >>
     script_fields:
-      <<__script_fields= ~ >>
+      <<script_fields= ~ >>
     filter:
       and:
         - term: <<term= ~ >>
@@ -13,6 +13,7 @@ ANCHORS:
         - <<filters= ~ >>
     sort: <<sort= ~ >>
     facets: <<facets= ~ >>
+
 
 
 _missing_fields:

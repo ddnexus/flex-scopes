@@ -51,6 +51,7 @@ module Flex
         deep_merge :params => value
       end
 
+      # meaningful alias of deep_merge
       def variables(*variables)
         deep_merge *variables
       end
@@ -63,9 +64,15 @@ module Flex
         deep_merge :type => val
       end
 
+      # script_fields(:my_field       => 'script ...',                   # simpler form
+      #               :my_other_field => {:script => 'script ...', ...}) # ES API
       def script_fields(hash)
-        hash.each_value {|v| v[:script].gsub!(/\n+\s*/,' ')}
-        deep_merge :__script_fields => hash
+        hash.keys.each do |k|
+          v = hash[k]
+          script = v.is_a?(String) ? v : v[:script]
+          hash[k][:script] = script.gsub(/\n+\s*/,' ')
+        end
+        deep_merge :script_fields => hash
       end
 
       def facets(hash)
