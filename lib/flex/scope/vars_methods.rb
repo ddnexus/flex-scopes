@@ -49,6 +49,18 @@ module Flex
         deep_merge :params => value
       end
 
+      def variables(*variables)
+        deep_merge *variables
+      end
+
+      def index(val)
+        deep_merge :index => val
+      end
+
+      def type(val)
+        deep_merge :type => val
+      end
+
     private
 
       def array_value(value)
