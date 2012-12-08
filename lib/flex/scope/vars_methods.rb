@@ -11,7 +11,8 @@ module Flex
       def terms(value)
         terms, missing_fields = {}, []
         value.each { |f, v| v.nil? ? missing_fields.push({ :missing => f }) : (terms[f] = v) }
-        deep_merge :terms => terms, :_missing_fields => missing_fields
+        terms, term = terms.partition{|k,v| v.is_a?(Array)}
+        deep_merge :terms => Hash[terms], :term => Hash[term], :_missing_fields => missing_fields
       end
 
       # accepts one or an array or a list of filter structures
