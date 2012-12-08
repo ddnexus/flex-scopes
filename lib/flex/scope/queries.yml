@@ -2,7 +2,7 @@ ANCHORS:
   - &scope
     query:
       query_string:
-        query: <<query= '*' >>
+        <<query= {query:\ '*'} >>
     script_fields:
       <<__script_fields= ~ >>
     filter:

@@ -2,8 +2,9 @@ module Flex
   class Scope
     module VarsMethods
 
-      def query(string)
-        deep_merge :query => string
+      def query(q)
+        hash = q.is_a?(Hash) ? q : {:query => q}
+        deep_merge :query => hash
       end
 
       # accepts also :any_term => nil for missing values
