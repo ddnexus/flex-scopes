@@ -20,9 +20,9 @@ module Flex
       #      #=> [#<MyModel ... color: "red", size: "small">, #<MyModel ... color: "bue", size: "small">]
       #
       def find(ids, *vars)
-        wrapped = ids.is_a?(::Array) ? ids : [ids]
         raise ArgumentError, "Empty argument passed (got #{ids.inspect})" \
-            if wrapped.empty?
+              if ids.nil? || ids.respond_to?(:empty?) && ids.empty?
+        wrapped = ids.is_a?(::Array) ? ids : [ids]
         result = Query.ids deep_merge(*vars, :ids => wrapped)
         (ids.is_a?(::Array) || result.variables[:raw_result]) ? result : result.first
       end
