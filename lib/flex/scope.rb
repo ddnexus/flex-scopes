@@ -26,7 +26,7 @@ module Flex
       when is_scope?(meth)
         deep_merge self[:context].send(meth, *args, &block)
       when is_template?(meth)
-        self[:context].send(meth, deep_merge(args.first), &block)
+        self[:context].send(meth, deep_merge(*args), &block)
       end
     end
 
