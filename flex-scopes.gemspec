@@ -2,7 +2,7 @@ require 'date'
 
 Gem::Specification.new do |s|
   s.name                      = 'flex-scopes'
-  s.summary                   = 'ActiveRecord-style chainable scopes and finders for Flex'
+  s.summary                   = 'ActiveRecord-like chainable scopes and finders for Flex'
   s.description               = <<-description
 flex-scopes provides an easy to use ruby API to search ElasticSearch with ActiveRecord-like chainable and mergeables scopes.
   description
