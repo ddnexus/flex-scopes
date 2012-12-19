@@ -24,25 +24,29 @@ module Flex
               if ids.nil? || ids.respond_to?(:empty?) && ids.empty?
         wrapped = ids.is_a?(::Array) ? ids : [ids]
         result  = Query.ids self, *vars, :ids => wrapped
-        (ids.is_a?(::Array) || result.variables[:raw_result]) ? result : result.first
+        docs    = result.get_docs
+        ids.is_a?(::Array) ? docs : docs.first
       end
 
       # it limits the size of the query to the first document and returns it as a single document object
       def first(*vars)
         result = Query.get params(:size => 1), *vars
-        result.variables[:raw_result] ? result : result.first
+        docs   = result.get_docs
+        docs.is_a?(Array) ? docs.first : docs
       end
 
       # it limits the size of the query to the last document and returns it as a single document object
       def last(*vars)
         result = Query.get params(:from => count-1, :size => 1), *vars
-        result.variables[:raw_result] ? result : result.first
+        docs   = result.get_docs
+        docs.is_a?(Array) ? docs.first : docs
       end
 
       # will retrieve all documents, the results will be limited by the default :size param
       # use #scan_all if you want to really retrieve all documents (in batches)
       def all(*vars)
-        Query.get self, *vars
+        result = Query.get self, *vars
+        result.get_docs
       end
 
       def each(*vars, &block)
@@ -57,7 +61,9 @@ module Flex
       # You can pass :scroll and :size as params in order to control the action.
       # See http://www.elasticsearch.org/guide/reference/api/search/scroll.html
       def scan_all(*vars, &block)
-        Query.flex.scan_search(:get, self, *vars, &block)
+        Query.flex.scan_search(:get, self, *vars) do |result|
+          block.call result.get_docs
+        end
       end
 
       # performs a count search on the scope

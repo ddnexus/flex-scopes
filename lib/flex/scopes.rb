@@ -8,7 +8,6 @@ module Flex
         def self.flex; @flex end
 
         extend ClassMethods
-        extend Scopes::FlexResult
 
         @scope_methods = []
         def self.scope_methods; @scope_methods end
