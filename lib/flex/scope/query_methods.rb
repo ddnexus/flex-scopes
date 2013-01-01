@@ -67,8 +67,17 @@ module Flex
       end
 
       # performs a count search on the scope
+      # you can pass a template name as the first arg and
+      # it will be used to compute the count. For example:
+      # SearchClass.scoped.count(:search_template, vars)
+      #
       def count(*vars)
-        result = Query.flex.count_search(:get, self, *vars)
+        result = if vars.first.is_a?(Symbol)
+                   template = vars.shift
+                   self[:context].flex.count_search(template, self, *vars)
+                 else
+                   Query.flex.count_search(:get, self, *vars)
+                 end
         result['hits']['total']
       end
 
