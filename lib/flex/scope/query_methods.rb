@@ -81,6 +81,13 @@ module Flex
         result['hits']['total']
       end
 
+      # indexes data
+      def index(data, *vars)
+        vars = deep_merge *vars
+        meth = vars[:id] ? :put_store : :post_store
+        Flex.send meth, {:data => data}, vars
+      end
+
     end
   end
 end
