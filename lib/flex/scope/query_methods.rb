@@ -74,7 +74,8 @@ module Flex
       def count(*vars)
         result = if vars.first.is_a?(Symbol)
                    template = vars.shift
-                   self[:context].flex.count_search(template, self, *vars)
+                   # preserves an eventual wrapper by calling the template method
+                   self[:context].send(template, params(:search_type => 'count'), *vars)
                  else
                    Query.flex.count_search(:get, self, *vars)
                  end
