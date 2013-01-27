@@ -33,7 +33,7 @@ module Flex
   private
 
     def is_template?(name)
-      self[:context].flex.respond_to?(:templates) && self[:context].flex.templates.has_key?(name.to_sym)
+      self[:context].respond_to?(:template_methods) && self[:context].template_methods.include?(name.to_sym)
     end
 
     def is_scope?(name)
