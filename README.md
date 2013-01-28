@@ -1,6 +1,6 @@
 # flex-scopes
 
-`flex-scopes` provides an easy to use ruby API to search ElasticSearch with ActiveRecord-like chainable ane mergeables scopes.
+`flex-scopes` provides an easy to use ruby API to search ElasticSearch with ActiveRecord-like chainable and mergeables scopes.
 
 ## Useful Links
 
@@ -13,4 +13,4 @@ Special thanks for their sponsorship to [Escalate Media](http://www.escalatemedi
 ## Copyright
 
 Copyright (c) 2012-2013 by [Domizio Demichelis](mailto://dd.nexus@gmail.com)<br>
-See [LICENSE](./flex-rails/blob/master/LICENSE) for details.
+See [LICENSE](./flex-scopes/blob/master/LICENSE) for details.
