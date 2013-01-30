@@ -4,7 +4,6 @@ module Flex
     def self.included(context)
       context.class_eval do
         @flex ||= ClassProxy::Base.new(context)
-        @flex.extend(ClassProxy::CommonVars) # used to add index and type to Loader only classes
         def self.flex; @flex end
 
         extend ClassMethods
