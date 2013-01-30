@@ -3,7 +3,7 @@ module Flex
 
     module Query
 
-      include Loader
+      include Templates
       flex.load_source File.expand_path('../queries.yml', __FILE__)
 
     end
