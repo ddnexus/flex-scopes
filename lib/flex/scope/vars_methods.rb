@@ -79,6 +79,10 @@ module Flex
         deep_merge :facets => hash
       end
 
+      def highlight(hash)
+        deep_merge :highlight => hash
+      end
+
     private
 
       def array_value(value)

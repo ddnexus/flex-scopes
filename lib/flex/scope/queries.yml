@@ -13,6 +13,7 @@ ANCHORS:
         - <<filters= ~ >>
     sort: <<sort= ~ >>
     facets: <<facets= ~ >>
+    highlight: <<highlight= ~ >>
 
 
 
