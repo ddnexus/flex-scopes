@@ -46,6 +46,12 @@ module Flex
         deep_merge :page => value || 1
       end
 
+      # accepts one hash of ranges documented at
+      # http://www.elasticsearch.org/guide/reference/query-dsl/range-filter/
+      def range(value)
+        deep_merge :range => value
+      end
+
       # the standard :params variable
       def params(value)
         deep_merge :params => value

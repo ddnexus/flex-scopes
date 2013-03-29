@@ -9,6 +9,7 @@ ANCHORS:
       and:
         - term: <<term= ~ >>
         - terms: <<terms= ~ >>
+        - range: <<range= ~ >>
         - <<_missing_fields= ~ >>
         - <<filters= ~ >>
     sort: <<sort= ~ >>
