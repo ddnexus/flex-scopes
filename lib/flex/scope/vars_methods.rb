@@ -2,22 +2,11 @@ module Flex
   class Scope
     module VarsMethods
 
+      include Scope::Utils
+
       def query(q)
         hash = q.is_a?(Hash) ? q : {:query => q}
         deep_merge :query => hash
-      end
-
-      # accepts also :any_term => nil for missing values
-      def terms(value)
-        terms, missing_fields = {}, []
-        value.each { |f, v| v.nil? ? missing_fields.push({ :missing => f }) : (terms[f] = v) }
-        terms, term = terms.partition{|k,v| v.is_a?(Array)}
-        deep_merge :terms => Hash[terms], :term => Hash[term], :_missing_fields => missing_fields
-      end
-
-      # accepts one or an array or a list of filter structures
-      def filters(*value)
-        deep_merge :filters => array_value(value)
       end
 
       # accepts one or an array or a list of sort structures documented at
@@ -44,12 +33,6 @@ module Flex
       # sets the :from param so it will return the nth page of size :size
       def page(value)
         deep_merge :page => value || 1
-      end
-
-      # accepts one hash of ranges documented at
-      # http://www.elasticsearch.org/guide/reference/query-dsl/range-filter/
-      def range(value)
-        deep_merge :range => value
       end
 
       # the standard :params variable
@@ -87,12 +70,6 @@ module Flex
 
       def highlight(hash)
         deep_merge :highlight => hash
-      end
-
-    private
-
-      def array_value(value)
-        (value.first.is_a?(::Array) && value.size == 1) ? value.first : value
       end
 
     end

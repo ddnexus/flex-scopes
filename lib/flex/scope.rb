@@ -4,13 +4,11 @@ module Flex
 
     class Error < StandardError; end
 
-    require 'flex/scope/vars_methods'
-    require 'flex/scope/query_methods'
-
+    include FilterMethods
     include VarsMethods
     include QueryMethods
 
-    SCOPED_METHODS = VarsMethods.instance_methods + QueryMethods.instance_methods
+    SCOPED_METHODS = FilterMethods.instance_methods + VarsMethods.instance_methods + QueryMethods.instance_methods
 
     def inspect
       "#<#{self.class.name} #{self}>"
