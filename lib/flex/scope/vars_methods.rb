@@ -72,6 +72,10 @@ module Flex
         deep_merge :highlight => hash
       end
 
+      def metrics
+        deep_merge :params => {:search_type => 'count'}
+      end
+
     end
   end
 end
