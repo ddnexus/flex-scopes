@@ -6,7 +6,7 @@ module Flex
 
       def query(q)
         hash = q.is_a?(Hash) ? q : {:query => q}
-        deep_merge :query => hash
+        deep_merge :cleanable_query => hash
       end
 
       # accepts one or an array or a list of sort structures documented at
@@ -58,8 +58,8 @@ module Flex
       def script_fields(hash)
         hash.keys.each do |k|
           v = hash[k]
-          script = v.is_a?(String) ? v : v[:script]
-          hash[k][:script] = script.gsub(/\n+\s*/,' ')
+          hash[k] = {:script => v} unless v.is_a?(Hash)
+          hash[k][:script].gsub!(/\n+\s*/,' ')
         end
         deep_merge :script_fields => hash
       end
