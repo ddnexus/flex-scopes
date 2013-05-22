@@ -10,7 +10,7 @@ module Flex
 
     module QueryMethods
 
-      #    MyModel.find(ids, vars={})
+      #    MyModel.find(ids, *vars)
       #    - ids can be a single id or an array of ids
       #
       #    MyModel.find '1Momf4s0QViv-yc7wjaDCA'
@@ -53,10 +53,6 @@ module Flex
         all(*vars).each &block
       end
 
-      def destroy(*vars)
-        Query.destroy self, *vars
-      end
-
       # scan_search: the block will be yielded many times with an array of batched results.
       # You can pass :scroll and :size as params in order to control the action.
       # See http://www.elasticsearch.org/guide/reference/api/search/scroll.html
@@ -64,6 +60,11 @@ module Flex
         Query.flex.scan_search(:get, self, *vars) do |result|
           block.call result.get_docs
         end
+      end
+      alias_method :each_batch, :scan_all
+
+      def destroy(*vars)
+        Query.destroy self, *vars
       end
 
       # performs a count search on the scope
