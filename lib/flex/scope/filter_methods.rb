@@ -47,7 +47,7 @@ module Flex
       end
 
 
-      %w[and or not].each do |m|
+      %w[and or].each do |m|
         class_eval <<-ruby, __FILE__, __LINE__
         def #{m}(&block)
           vars = {:_#{m} => Hash[Flex::Scope.new.instance_eval(&block).to_a]}

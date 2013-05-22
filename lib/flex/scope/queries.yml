@@ -6,7 +6,6 @@ ANCHORS:
     - <<_missing_list= ~ >>
     - <<_and= ~ >>
     - <<_or= ~ >>
-    - <<_not= ~ >>
     - range: <<range= ~ >>
 
   - &scope
@@ -25,9 +24,6 @@ _and:
 
 _or:
   or: *filters
-
-_not:
-  not: *filters
 
 _missing_fields:
   missing:
