@@ -4,10 +4,11 @@ module Flex
 
       include Scope::Utils
 
-      def query(q)
+      def query_string(q)
         hash = q.is_a?(Hash) ? q : {:query => q}
         deep_merge :cleanable_query => hash
       end
+      alias_method :query, :query_string
 
       # accepts one or an array or a list of sort structures documented at
       # http://www.elasticsearch.org/guide/reference/api/search/sort.html
@@ -18,14 +19,13 @@ module Flex
       end
 
       # the fields that you want to retrieve (limiting the size of the response)
-      # the returned records will be frozen, and the missing fileds will be nil
-      # pass an array eg fields.([:field_one, :field_two])
-      # or a list of fields e.g. fields(:field_one, :field_two)
+      # the returned records will be frozen (for Flex::ActiveModel objects), and the missing fields will be nil
+      # pass an array eg fields.([:field_one, :field_two]) or a list of fields e.g. fields(:field_one, :field_two)
       def fields(*value)
         deep_merge :params => {:fields => array_value(value)}
       end
 
-      # limits the resize of the retrieved hits
+      # limits the size of the retrieved hits
       def size(value)
         deep_merge :params => {:size => value}
       end
