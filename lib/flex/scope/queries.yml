@@ -11,7 +11,7 @@ ANCHORS:
   - &scope
     query:
       query_string:
-        <<cleanable_query= {query:\ '*'} >>
+        "<<cleanable_query= {query: '*'} >>"
     script_fields:
       <<script_fields= ~ >>
     sort: <<sort= ~ >>
