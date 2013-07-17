@@ -64,8 +64,8 @@ module Flex
       alias_method :each_batch, :scan_all
       alias_method :find_in_batches, :scan_all
 
-      def destroy(*vars)
-        Query.destroy self, *vars
+      def delete(*vars)
+        Query.delete self, *vars
       end
 
       # performs a count search on the scope
