@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
   s.name                      = 'flex-scopes'
   s.summary                   = 'ActiveRecord-like chainable scopes and finders for Flex'
   s.description               = <<-description
-flex-scopes provides an easy to use ruby API to search ElasticSearch with ActiveRecord-like chainable and mergeables scopes.
+Provides an easy to use ruby API to search elasticsearch with ActiveRecord-like chainable and mergeables scopes.
   description
   s.homepage                  = 'http://github.com/ddnexus/flex-scopes'
   s.authors                   = ["Domizio Demichelis"]
