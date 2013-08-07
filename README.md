@@ -3,8 +3,9 @@
 Provides an easy to use ruby API to search elasticsearch with ActiveRecord-like chainable and mergeables scopes.
 
 
-## Useful Links
+## Links
 
+* [Flex Repository](https://github.com/ddnexus/flex)
 * [Flex Project (Global Documentation)](http://ddnexus.github.io/flex/doc/)
 * [flex-scopes Gem (Specific Documentation)](http://ddnexus.github.io/flex/doc/3-flex-scopes)
 * [Issues](https://github.com/ddnexus/flex-scopes/issues)
