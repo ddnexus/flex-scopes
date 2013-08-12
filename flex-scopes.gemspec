@@ -3,10 +3,8 @@ version = File.read(File.expand_path('../VERSION', __FILE__)).strip
 
 Gem::Specification.new do |s|
   s.name                      = 'flex-scopes'
-  s.summary                   = 'ActiveRecord-like chainable scopes and finders for Flex'
-  s.description               = <<-description
-Provides an easy to use ruby API to search elasticsearch with ActiveRecord-like chainable and mergeables scopes.
-  description
+  s.summary                   = 'ActiveRecord-like chainable scopes and finders for Flex.'
+  s.description               = 'Provides an easy to use ruby API to search elasticsearch with ActiveRecord-like chainable and mergeables scopes.'
   s.homepage                  = 'http://github.com/ddnexus/flex-scopes'
   s.authors                   = ["Domizio Demichelis"]
   s.email                     = 'dd.nexus@gmail.com'
